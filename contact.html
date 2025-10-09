@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Contact — BubbleGeorge</title>
+  <meta name="description" content="Get in touch with BubbleGeorge — premium mobile car care." />
+  <style>
+    /* ------------------ THEME VARIABLES ------------------ */
+    :root{
+      --bg:#0f0f10;
+      --surface:#121214;
+      --text:#ffffff;
+      --muted:rgba(255,255,255,0.68);
+      --ring:#8c6b33;
+      --gold-0:#fff6e4;
+      --gold-1:#f7e2b9;
+      --gold-2:#e7c98e;
+      --gold-3:#c9a463;
+      --gold-4:#a6864c;
+      --beige-0:#f9e8c9;
+
+      --font-display: ui-rounded, "SF Pro Display", Inter, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial;
+      --font-body: Inter, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial;
+      --container: 1140px;
+      --radius: 14px;
+      --shadow-lg: 0 28px 90px rgba(0,0,0,0.72);
+      --shadow-md: 0 18px 60px rgba(0,0,0,0.65);
+      --shadow-sm: 0 10px 30px rgba(0,0,0,0.55);
+    }
+
+    /* ------------------ BASE ------------------ */
+    html,body{height:100%}
+    body{
+      margin:0; background:var(--bg); color:var(--text);
+      font-family:var(--font-body); line-height:1.5;
+      -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;
+    }
+    a{color:inherit; text-decoration:none}
+    img{max-width:100%; display:block}
+    .container{width:100%; max-width:var(--container); margin:0 auto; padding:0 20px}
+    .muted{color:var(--muted)}
+    .grid{display:grid; gap:24px}
+    .md\:grid-cols-2{grid-template-columns:repeat(2,1fr)}
+    .card{
+      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.06));
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: var(--radius);
+      padding: 26px;
+      box-shadow: var(--shadow-md);
+    }
+    .btn{
+      display:inline-block; padding:12px 18px; border-radius:10px;
+      background: linear-gradient(180deg,var(--gold-1),var(--gold-3));
+      color:#0a0704; font-weight:800; box-shadow: 0 10px 28px rgba(0,0,0,0.45);
+    }
+    .btn:hover{transform:translateY(-1px)}
+    .btn-ghost{
+      display:inline-flex; align-items:center; justify-content:center;
+      padding:10px 14px; border-radius:8px; border:1px solid rgba(255,255,255,0.06);
+      color:var(--text); background:transparent;
+    }
+
+    /* ------------------ HEADER with CSS-only hamburger ------------------ */
+    .site-header{
+      position:sticky; top:0; z-index:50; background:rgba(15,15,16,0.72);
+      backdrop-filter:saturate(140%) blur(10px); border-bottom:1px solid rgba(255,255,255,0.06);
+    }
+    .header-inner{display:flex; align-items:center; gap:16px; padding:16px 0}
+    .site-logo{font-family:var(--font-display); font-weight:900; letter-spacing:-0.3px; font-size:28px}
+    /* Hamburger */
+    #nav-toggle{display:none}
+    .hamburger{
+      margin-left:auto; width:38px; height:30px; position:relative; cursor:pointer;
+      display:flex; align-items:center; justify-content:center;
+    }
+    .hamburger span, .hamburger::before, .hamburger::after{
+      content:""; position:absolute; width:26px; height:3px; background:#fff; border-radius:3px; transition:transform .25s ease, opacity .25s ease;
+    }
+    .hamburger span{transform:translateY(0)}
+    .hamburger::before{transform:translateY(-8px)}
+    .hamburger::after{transform:translateY(8px)}
+    /* Menu panel */
+    .menu{
+      position:fixed; top:64px; right:20px; background:var(--surface);
+      border:1px solid rgba(255,255,255,0.08); border-radius:12px; padding:12px;
+      width:220px; box-shadow:var(--shadow-lg); opacity:0; pointer-events:none; transform:translateY(-6px); transition:.2s ease;
+    }
+    .menu a{display:block; padding:10px 12px; border-radius:8px; color:var(--text)}
+    .menu a:hover{background:rgba(255,255,255,0.05)}
+    .menu .btn{display:block; text-align:center; margin-top:8px}
+    /* Toggle open */
+    #nav-toggle:checked ~ .menu{opacity:1; pointer-events:auto; transform:translateY(0)}
+    /* Desktop inline nav (optional) */
+    @media (min-width:960px){
+      .menu{position:static; opacity:1; pointer-events:auto; transform:none; display:flex; gap:16px; padding:0; width:auto; background:transparent; border:none; box-shadow:none; margin-left:auto}
+      .menu a{padding:8px 10px}
+      .hamburger{display:none}
+    }
+
+    /* ------------------ HERO ------------------ */
+    .hero{padding:48px 0; background:radial-gradient(120% 90% at 20% 10%, #1b1b1d, #0f0f10)}
+    .hero-wrap{display:grid; grid-template-columns:1.1fr 1fr; gap:28px; align-items:center}
+    .hero-media{
+      position:relative; min-height:320px; border-radius:20px; overflow:hidden;
+      background:#0b0b0c; box-shadow:var(--shadow-lg); border:1px solid rgba(255,255,255,0.06);
+    }
+    .hero-media img{width:100%; height:100%; object-fit:cover}
+    .hero h1{
+      font-family:var(--font-display); font-weight:900; margin:0 0 12px 0;
+      font-size:42px; letter-spacing:-0.6px; line-height:1.06; text-shadow:0 6px 30px rgba(0,0,0,0.6);
+    }
+    .lead{color:var(--muted); margin:0 0 18px 0; font-size:18px}
+
+    /* ------------------ CONTACT LAYOUT ------------------ */
+    .section{padding:34px 0}
+    .contact-grid{display:grid; grid-template-columns:1fr 1fr; gap:24px}
+    .list{list-style:none; padding:0; margin:0}
+    .list li{display:flex; gap:12px; padding:10px 0; border-bottom:1px dashed rgba(255,255,255,0.06)}
+    .label{color:rgba(255,255,255,0.6); font-size:12px; text-transform:uppercase; letter-spacing:.7px; min-width:110px}
+    .value{color:var(--text); font-weight:700}
+
+    /* Footer */
+    .site-footer{border-top:1px solid rgba(255,255,255,0.06); background:var(--surface); margin-top:48px}
+    .footer-inner{display:flex; align-items:center; justify-content:space-between; gap:16px; padding:18px 0}
+    .footer-links{color:var(--muted)}
+
+    /* Selection + focus */
+    ::selection{background:var(--gold-3); color:#fff}
+    :focus-visible{outline:3px solid var(--ring); outline-offset:2px; border-radius:10px}
+
+    /* Responsive */
+    @media (max-width:1060px){ .hero-wrap{grid-template-columns:1fr} }
+    @media (max-width:768px){
+      .hero h1{font-size:34px}
+      .contact-grid{grid-template-columns:1fr}
+      .header-inner{padding:14px 0}
+      .btn{padding:10px 16px; font-size:14px}
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ================= HEADER (no Login; hamburger menu) ================= -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="site-logo">BubbleGeorge</a>
+
+      <!-- Hamburger (mobile) -->
+      <input type="checkbox" id="nav-toggle" aria-label="Toggle menu" />
+      <label class="hamburger" for="nav-toggle" aria-hidden="true">
+        <span></span>
+      </label>
+
+      <!-- Menu -->
+      <nav class="menu" aria-label="Main navigation">
+        <a href="index.html">Home</a>
+        <a href="about.html">About Me</a>
+        <a href="contact.html" class="active">Contact</a>
+        <a class="btn" href="https://docs.google.com/forms/d/e/1FAIpQLSelxT4P0avDifz8Eq8pRA2ekXIB0Cz0FSdgR34nb8k_Riz_rA/viewform?usp=header" target="_blank" rel="noopener">Book</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ================= HERO ================= -->
+  <section class="hero">
+    <div class="container hero-wrap">
+      <!-- Left: image block uses your local logo -->
+      <div class="hero-media" role="img" aria-label="BubbleGeorge">
+        <!-- Put your logo file in the same folder as this HTML file -->
+        <img src="logo-george.png" alt="BubbleGeorge logo">
+      </div>
+
+      <!-- Right: title and CTA -->
+      <div>
+        <h1>Contact</h1>
+        <p class="lead">Have a question or want to schedule? Reach out and we’ll get back fast.</p>
+        <a class="btn" href="https://docs.google.com/forms/d/e/1FAIpQLSelxT4P0avDifz8Eq8pRA2ekXIB0Cz0FSdgR34nb8k_Riz_rA/viewform?usp=header" target="_blank" rel="noopener">Book</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= CONTACT INFO + QUICK BOOK (FORM REMOVED) ================= -->
+  <section class="section">
+    <div class="container contact-grid">
+      <!-- Info -->
+      <div class="card">
+        <h3 style="font-family:var(--font-display); margin:0 0 8px 0; font-size:28px">Get in touch</h3>
+        <p class="muted" style="margin:0 0 16px 0">Demo details below—change anytime.</p>
+        <ul class="list">
+          <li><span class="label">Phone</span><span class="value">+44 7400 123 456</span></li>
+          <li><span class="label">Email</span><span class="value"><a href="mailto:hello@bubblegeorge.co.uk">hello@bubblegeorge.co.uk</a></span></li>
+          <li><span class="label">Service Area</span><span class="value">Greater London & nearby</span></li>
+          <li><span class="label">Hours</span><span class="value">Mon–Sat · 08:00–18:00</span></li>
+          <li><span class="label">Address</span><span class="value">12 Riverside Way, London, UK</span></li>
+        </ul>
+
+        <div style="margin-top:18px">
+          <a class="btn" href="https://docs.google.com/forms/d/e/1FAIpQLSelxT4P0avDifz8Eq8pRA2ekXIB0Cz0FSdgR34nb8k_Riz_rA/viewform?usp=header" target="_blank" rel="noopener">Book</a>
+          <a class="btn-ghost" style="margin-left:10px" href="about.html">About Me</a>
+        </div>
+      </div>
+
+      <!-- Quick Book / Info (replaces the Send a message form) -->
+      <div class="card">
+        <h3 style="font-family:var(--font-display); margin:0 0 8px 0; font-size:28px">Quick Book</h3>
+        <p class="muted" style="margin:0 0 16px 0">Use the booking form to request a slot. We'll reply to confirm.</p>
+        <p style="margin:0 0 12px 0"><strong class="value">Booking link:</strong></p>
+        <p class="muted" style="font-size:14px; margin-bottom:18px">Complete the short form and we'll reach out to arrange time and location.</p>
+        <a class="btn" href="https://docs.google.com/forms/d/e/1FAIpQLSelxT4P0avDifz8Eq8pRA2ekXIB0Cz0FSdgR34nb8k_Riz_rA/viewform?usp=header" target="_blank" rel="noopener">Book</a>
+
+        <div style="margin-top:20px; display:grid; grid-template-columns:1fr 1fr; gap:10px">
+          <!-- small demo images from Unsplash for visual context; replace or remove as needed -->
+          <img src="https://images.unsplash.com/photo-1503736334956-4c8f8e92946d?w=800&q=60&auto=format&fit=crop" alt="car detail 1" style="border-radius:10px; height:84px; object-fit:cover">
+          <img src="https://images.unsplash.com/photo-1470115636492-6d2b56f9143d?w=800&q=60&auto=format&fit=crop" alt="car detail 2" style="border-radius:10px; height:84px; object-fit:cover">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div>© 2025 BubbleGeorge</div>
+      <div class="footer-links">
+        <a href="index.html#services">Services</a> · <a href="about.html">About Me</a> · <a href="contact.html">Contact</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
